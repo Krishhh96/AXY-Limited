@@ -13,7 +13,11 @@ export class PageComponent implements OnInit {
   loginData;
   selectBoxData;
   firstName;
-  contactObj = {};
+  contactObj = {
+    name: '',
+    country: '',
+    contactNumber: '',
+  };
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -22,6 +26,7 @@ export class PageComponent implements OnInit {
     });
     this.authService.selectBoxData().subscribe((selData) => {
       this.selectBoxData = selData;
+      console.log(this.selectBoxData);
     });
   }
 
