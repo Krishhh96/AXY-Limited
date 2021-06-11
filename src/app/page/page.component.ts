@@ -22,7 +22,6 @@ export class PageComponent implements OnInit {
     });
     this.authService.selectBoxData().subscribe((selData) => {
       this.selectBoxData = selData;
-      console.log(this.selectBoxData);
     });
   }
 
@@ -31,7 +30,6 @@ export class PageComponent implements OnInit {
     const email = formData.value.email;
     const id = formData.value.id;
     const currentUser = this.loginData.find((user) => user.id == id);
-    console.log(currentUser);
     if (currentUser.email === email) {
       this.isAuth = true;
       this.erroObj = false;
@@ -40,7 +38,6 @@ export class PageComponent implements OnInit {
       this.isAuth = false;
       this.erroObj = true;
     }
-    console.log(this.isAuth);
     formData.reset();
   }
 
