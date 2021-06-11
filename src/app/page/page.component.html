@@ -1,0 +1,93 @@
+<div class="container container-custom">
+  <form #authForm="ngForm" (ngSubmit)="signIn(authForm)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        placeholder="Enter email"
+        name="email"
+        ngModel
+        required
+        email
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input
+        type="number"
+        class="form-control"
+        id="id"
+        name="id"
+        ngModel
+        placeholder="ID"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <form
+    #contactForm="ngForm"
+    (ngSubmit)="contactData(contactForm)"
+    *ngIf="isAuth"
+  >
+    <div class="row custom-row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="company">Companies</label>
+          <select class="form-control" id="company">
+            <option *ngFor="let data of selectBoxData" [value]="data.name">
+              {{ data.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <h2>Add new data</h2>
+    <div class="row custom-row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="contactArr.name"
+            name="firstName"
+          />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            [(ngModel)]="contactArr.country"
+            name="country"
+          />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="contact">Contact</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact"
+            [(ngModel)]="contactArr.contactNumber"
+            name="contact"
+          />
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="alert alert-danger mt3" role="alert" *ngIf="erroObj">
+    Invalid Credentials
+  </div>
+</div>
